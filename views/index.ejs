@@ -44,7 +44,10 @@
        </div> 
        <button type="submit" class="btn btn-warning">Register</button>
    </form>
-   <form action='/login' method='post' id="login"  class="bg-info" >    
+   <form action='/login' method='post' id="login"  class="bg-info" >   
+    <% if(messages.login) { %>
+        <h3 style="color:red;"><%= messages.login %></h3>
+    <% } %> 
      <label for="loginEmail">Email : </label>
      <input type="text" name="loginEmail">
     </div> 

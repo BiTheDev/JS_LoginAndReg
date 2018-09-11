@@ -66,11 +66,12 @@ function login(req,res){
             console.log(errs);
             for(var key in errs.errors){
                 console.log(errs.errors[key].message);
-                req.flash('loginemail', errs.errors[key].message);
+                req.flash('login', "error");
             }  
             res.redirect('/')
         }else{
             if(data1 == null){
+                req.flash('login', "Invalid email or password");
                res.redirect('/');
             }else{
                 bcrypt.compare(req.body.LoginPass,data1.password)
@@ -84,6 +85,7 @@ function login(req,res){
                 .catch( errs =>{
                     console.log("login error2");
                     console.log(errs);
+                    req.flash('login', "Invalid email or password");
                     res.redirect('/')
                 })
             }
